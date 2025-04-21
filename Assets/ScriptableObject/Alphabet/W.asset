@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb7f827e1254b9498566bfc585d7b9e, type: 3}
+  m_Name: W
+  m_EditorClassIdentifier: 
+  letterName: W
+  animatorController: {fileID: 9100000, guid: 0c9a6e3f1e526bd4589e5aff05419ada, type: 2}
+  letterSprite: {fileID: 21300000, guid: 67f871b5dcbd0404f8e4be202450cfe0, type: 3}

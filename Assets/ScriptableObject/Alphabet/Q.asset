@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb7f827e1254b9498566bfc585d7b9e, type: 3}
+  m_Name: Q
+  m_EditorClassIdentifier: 
+  letterName: Q
+  animatorController: {fileID: 9100000, guid: 715e02a526669f441aefb259c9d940e8, type: 2}
+  letterSprite: {fileID: 21300000, guid: fee5465a07d330b4b9ec84b8f6004cfd, type: 3}

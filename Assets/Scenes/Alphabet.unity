@@ -783,6 +783,30 @@ MonoBehaviour:
   alphabetList:
   - {fileID: 11400000, guid: d6c29ce921776184a8c3da0bce0d9763, type: 2}
   - {fileID: 11400000, guid: 27865929a33d01942a7e58e99d37110a, type: 2}
+  - {fileID: 11400000, guid: 8e66e7f091b06574785c00cc5542d223, type: 2}
+  - {fileID: 11400000, guid: 9bb0e4e479b642e4983c7253ba31acb7, type: 2}
+  - {fileID: 11400000, guid: 63aa49ffb3f226d43a19d9ea8d4116b9, type: 2}
+  - {fileID: 11400000, guid: 91d11ceaff4f69d47aeba7c1478e6a87, type: 2}
+  - {fileID: 11400000, guid: 784b41fd91fda9b458a9c5e6c066ff2e, type: 2}
+  - {fileID: 11400000, guid: 7b5f033115052ba449f48dba1a79e44f, type: 2}
+  - {fileID: 11400000, guid: df9777b196da8954a8700466422e27bf, type: 2}
+  - {fileID: 11400000, guid: 17d1c38c9b26f1543898785ab04fe7c1, type: 2}
+  - {fileID: 11400000, guid: f9eca88e35618e04ea55effa2f8af803, type: 2}
+  - {fileID: 11400000, guid: f91a9ef9ef9fa8944b773aaaca8df49d, type: 2}
+  - {fileID: 11400000, guid: ea2fc476eaab78a48a0c880acf360668, type: 2}
+  - {fileID: 11400000, guid: 69114383bb9907845bb6b81669cec8fe, type: 2}
+  - {fileID: 11400000, guid: 235b339ff8aaf724fb05de9873fe1065, type: 2}
+  - {fileID: 11400000, guid: 47d7a5da9ca120a4db675da4f6eb2a1c, type: 2}
+  - {fileID: 11400000, guid: 836dec8e5a93c774d88304a0570ad4e1, type: 2}
+  - {fileID: 11400000, guid: 704ad05b77d5f9140a0c4be26fbb1b63, type: 2}
+  - {fileID: 11400000, guid: 78d114ba73ad61f40acec92290620579, type: 2}
+  - {fileID: 11400000, guid: 418dd2a3bb474e84790fa94fd7bc7846, type: 2}
+  - {fileID: 11400000, guid: 3c25c73706bc1ac45a7c6a38c2dc5992, type: 2}
+  - {fileID: 11400000, guid: f5de729cddb437b4bb4320c9b27f7a72, type: 2}
+  - {fileID: 11400000, guid: 7037f3b5e9164294db961842879f3f03, type: 2}
+  - {fileID: 11400000, guid: 5b84572602a5e2a429fe5646677eea55, type: 2}
+  - {fileID: 11400000, guid: 456bad25f5f49d849bbe8a4338d1a17f, type: 2}
+  - {fileID: 11400000, guid: 19d1b54ba0c357b4f97b3bbbb7adac3b, type: 2}
   arUI: {fileID: 1179649116}
   scanGuideUI: {fileID: 409824379}
   backButton: {fileID: 1415014890}
