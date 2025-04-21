@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void ShowSettingsMenu() {
-        SetAllMenusInactive();
         settingsMenu.SetActive(true);
     }
 
@@ -44,4 +44,26 @@ public class MainMenuManager : MonoBehaviour
         SetAllMenusInactive();
         tutorialMenu.SetActive(true);
     }
+
+    public void ExitApplication() {
+        Debug.Log("Application Exited");
+        Application.Quit();
+    }
+
+    public void GoToAlphabetScene() {
+        SceneManager.LoadScene("Alphabet");
+    }
+
+    public void GoToWordScene() {
+        // SceneManager.LoadScene("Word");
+    }
+
+    public void GoToSentenceScene() {
+        // SceneManager.LoadScene("Sentence");
+    }
+
+    public void GoToQuizScene() {
+        // SceneManager.LoadScene("Quiz");
+    }
+
 }
