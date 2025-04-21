@@ -3397,6 +3397,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7069711349535442381}
+  animationSpeed: 0.5
+  modelTransform: {fileID: 4104108985473302152}
+  defaultRotationEuler: {x: -90, y: 180, z: 0}
+  rotationSpeed: 50
 --- !u!1 &5492004947156377655
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,19 +3,31 @@ using System.Collections;
 using UnityEngine;
 
 public class ModelTarget : MonoBehaviour {
+
+    [Header("Animation References")]
     [SerializeField] private Animator animator;
+    [SerializeField] private float animationSpeed = 0.5f;
+
+    [Space(10)]
+    [Header("Rotation References")]
+    [SerializeField] private Transform modelTransform;
+    [SerializeField] private Vector3 defaultRotationEuler;
     [SerializeField] private float rotationSpeed = 50f;
     
     private Coroutine freezeCoroutine;
     private bool isPaused = false;
-    private float animationSpeed = 0.5f;
-    private float savedSpeed = 1.0f;
+    private Coroutine rotationCoroutine;
     
     public void PlayCurrentAnimation() {
         ResetAnimatorState();
         animator.speed = animationSpeed;
         isPaused = false;
         freezeCoroutine = StartCoroutine(FreezeAtAnimationEnd());
+    }
+
+    public void SetAnimatorController(RuntimeAnimatorController controller) {
+        animator.runtimeAnimatorController = controller;
+        ResetAnimatorState();
     }
 
     public void StopAndResetAnimation() {
@@ -51,72 +63,59 @@ public class ModelTarget : MonoBehaviour {
         isPaused = true;
     }
 
-    public void TogglePlayPause() {
-    if (isPaused) {
-        // Resume animation
-        animator.speed = animationSpeed;
-        isPaused = false;
+    public void TogglePlayPause(bool pause) {
+        if (isPaused && !pause) {
+            // Resume animation
+            animator.speed = animationSpeed;
+            isPaused = false;
 
-        if (freezeCoroutine != null) {
-            StopCoroutine(freezeCoroutine);
-        }
-        freezeCoroutine = StartCoroutine(FreezeAtAnimationEnd());
-    } else {
-        // Pause animation
-        animator.speed = 0;
-        isPaused = true;
-
-        if (freezeCoroutine != null) {
-            StopCoroutine(freezeCoroutine);
-            freezeCoroutine = null;
-        }
-    }
-}
-    
-    public void RotateLeft() {
-        transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0, Space.World);
-    }
-    
-    public void RotateRight() {
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0, Space.World);
-    }
-    
-    public void RotateUp() {
-        transform.Rotate(-rotationSpeed * Time.deltaTime, 0, 0, Space.World);
-    }
-    
-    public void RotateDown() {
-        transform.Rotate(rotationSpeed * Time.deltaTime, 0, 0, Space.World);
-    }
-    
-    // For continuous rotation (hold button)
-    public void StartRotateLeft() {
-        StartCoroutine(ContinuousRotate(Vector3.down));
-    }
-    
-    public void StartRotateRight() {
-        StartCoroutine(ContinuousRotate(Vector3.up));
-    }
-    
-    public void StartRotateUp() {
-        StartCoroutine(ContinuousRotate(Vector3.left));
-    }
-    
-    public void StartRotateDown() {
-        StartCoroutine(ContinuousRotate(Vector3.right));
-    }
-    
-    public void StopRotation() {
-        StopAllCoroutines();
-        if (!isPaused && animator.speed > 0) {
+            if (freezeCoroutine != null) {
+                StopCoroutine(freezeCoroutine);
+            }
             freezeCoroutine = StartCoroutine(FreezeAtAnimationEnd());
+        } else {
+            // Pause animation
+            animator.speed = 0;
+            isPaused = true;
+
+            if (freezeCoroutine != null) {
+                StopCoroutine(freezeCoroutine);
+                freezeCoroutine = null;
+            }
         }
     }
     
-    private IEnumerator ContinuousRotate(Vector3 direction) {
+    public void StartContinuousRotate(Vector3 axis) {
+        StopRotation(); // Stop existing coroutine if any
+        rotationCoroutine = StartCoroutine(RotateRoutine(axis));
+    }
+
+    public void StopRotation() {
+        if (rotationCoroutine != null) {
+            StopCoroutine(rotationCoroutine);
+            rotationCoroutine = null;
+        }
+    }
+
+    private IEnumerator RotateRoutine(Vector3 axis) {
         while (true) {
-            transform.Rotate(direction * rotationSpeed * Time.deltaTime, Space.World);
+            Rotate(axis);
             yield return null;
         }
+    }
+
+    public void Rotate(Vector3 axis) {
+        float deltaRotation = rotationSpeed * Time.deltaTime;
+
+        // Only allow rotation around X and Y axis (no Z axis rotation)
+        if (axis == Vector3.up || axis == Vector3.down) {
+            transform.Rotate(0f, axis == Vector3.up ? deltaRotation : -deltaRotation, 0f, Space.Self);
+        } else if (axis == Vector3.left || axis == Vector3.right) {
+            transform.Rotate(axis == Vector3.left ? deltaRotation : -deltaRotation, 0f, 0f, Space.Self);
+        }
+    }
+
+    public void ResetRotation() {
+        transform.localRotation = Quaternion.Euler(defaultRotationEuler);
     }
 }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-[System.Serializable]
-public class AlphabetData {
-    public string letter;
-    public AnimationClip clip;
-    public Sprite image;
+[CreateAssetMenu(fileName = "AlphabetData", menuName = "SignLanguage/AlphabetData")]
+public class AlphabetData : ScriptableObject {
+    public string letterName;
+    public RuntimeAnimatorController animatorController;
+    public Sprite letterSprite;
 }
