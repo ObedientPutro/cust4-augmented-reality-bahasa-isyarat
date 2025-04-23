@@ -4,7 +4,10 @@ using UnityEngine.EventSystems;
 public class RotateButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
     
     public enum Direction { Up, Down, Left, Right }
+    public enum GameManager { Word, Alphabet }
+
     [SerializeField] private Direction rotateDirection;
+    [SerializeField] private GameManager gameManager;
 
     private Vector3 GetRotationVector() {
         return rotateDirection switch {
@@ -16,15 +19,23 @@ public class RotateButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         };
     }
 
+    private ModelTarget GetModelTarget() {
+        return gameManager switch {
+            GameManager.Word => WordManager.CurrentModelTarget,
+            GameManager.Alphabet => AlphabetManager.CurrentModelTarget,
+            _ => null
+        };
+    }
+
     public void OnPointerDown(PointerEventData eventData) {
-        var target = AlphabetManager.CurrentModelTarget;
+        ModelTarget target = GetModelTarget();
         if (target != null) {
             target.StartContinuousRotate(GetRotationVector());
         }
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        var target = AlphabetManager.CurrentModelTarget;
+        ModelTarget target = GetModelTarget();
         if (target != null) {
             target.StopRotation();
         }

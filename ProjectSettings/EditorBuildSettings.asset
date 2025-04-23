@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Alphabet.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Word.unity
+    guid: 005453507a9cf934b99dcab94238cbf7
   m_configObjects: {}
