@@ -7,8 +7,7 @@ public class WordManager : MonoBehaviour {
 
     public static ModelTarget CurrentModelTarget { get; private set; }
 
-    [Space(10)]
-    [Header("Buttons References")]
+    [Header("UI References")]
     [SerializeField] private GameObject arUI;
     [SerializeField] private GameObject scanGuideUI;
 

@@ -59,7 +59,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void GoToSentenceScene() {
-        // SceneManager.LoadScene("Sentence");
+        SceneManager.LoadScene("Sentence");
     }
 
     public void GoToQuizScene() {

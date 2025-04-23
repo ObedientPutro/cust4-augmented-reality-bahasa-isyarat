@@ -118,4 +118,8 @@ public class ModelTarget : MonoBehaviour {
     public void ResetRotation() {
         transform.localRotation = Quaternion.Euler(defaultRotationEuler);
     }
+
+    public float GetAnimationSpeed() {
+        return animationSpeed;
+    }
 }
