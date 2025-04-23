@@ -10,17 +10,21 @@ public class WordManager : MonoBehaviour {
     [Header("UI References")]
     [SerializeField] private GameObject arUI;
     [SerializeField] private GameObject scanGuideUI;
+    [SerializeField] private GameObject settingsMenu;
 
     [Space(10)]
     [Header("Buttons References")]
     [SerializeField] private Button backButton;
-    [SerializeField] private Button SettingsButton;
+    [SerializeField] private Button settingsButton;
     [SerializeField] private Button playButton;
     [SerializeField] private Button pauseButton;
     [SerializeField] private Button resetAnimationButton;
     [SerializeField] private Button resetRotationButton;
+
+    private List<ModelTarget> allModelTargets = new List<ModelTarget>();
     
     private void Awake() {
+        settingsButton.onClick.AddListener(ShowSettingsMenu);
         backButton.onClick.AddListener(BackToMainMenu); 
         playButton.onClick.AddListener(Play);
         pauseButton.onClick.AddListener(Pause);
@@ -29,8 +33,10 @@ public class WordManager : MonoBehaviour {
     }
 
     private void Start() {
+        Screen.orientation = ScreenOrientation.Portrait;
         CurrentModelTarget = null;
         HideUI();
+        HideSettingsMenu();
     }
 
     public void ShowUI() {
@@ -44,7 +50,25 @@ public class WordManager : MonoBehaviour {
     }
 
     public void SetActiveModelTarget(ModelTarget newTarget) {
+        if (!allModelTargets.Contains(newTarget))
+        allModelTargets.Add(newTarget);
+
+        // Set all others inactive
+        foreach (var model in allModelTargets) {
+            if (model != newTarget) model.gameObject.SetActive(false);
+        }
+
+        // Set new one as current and ensure it's active
         CurrentModelTarget = newTarget;
+        newTarget.gameObject.SetActive(true);
+    }
+
+    public void ResetActiveModelTarget() {
+        CurrentModelTarget = null;
+        // Reactivate all in case the user scans again
+        foreach (var model in allModelTargets) {
+            if (model != null) model.gameObject.SetActive(true);
+        }
     }
 
     public void Play() {
@@ -63,7 +87,18 @@ public class WordManager : MonoBehaviour {
         CurrentModelTarget.ResetRotation();
     }
 
+    public void ShowSettingsMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
+        settingsMenu.SetActive(true);
+    }
+
+    public void HideSettingsMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
+        settingsMenu.SetActive(false);
+    }
+
     public void BackToMainMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
         SceneManager.LoadScene("MainMenu");
     }
 }

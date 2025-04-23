@@ -17,6 +17,7 @@ public class SentenceManager : MonoBehaviour {
     [SerializeField] private GameObject scanGuideUI;
     [SerializeField] private GameObject previewUI;
     [SerializeField] private TextMeshProUGUI sentencePreviewText;
+    [SerializeField] private GameObject settingsMenu;
 
     [Space(10)]
     [Header("Core References")]
@@ -26,7 +27,7 @@ public class SentenceManager : MonoBehaviour {
     [Space(10)]
     [Header("Buttons References")]
     [SerializeField] private Button backButton;
-    [SerializeField] private Button SettingsButton;
+    [SerializeField] private Button settingsButton;
     [SerializeField] private Button startButton;
     [SerializeField] private Button rescanButton;
     [SerializeField] private Button playButton;
@@ -44,7 +45,8 @@ public class SentenceManager : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
-
+        
+        settingsButton.onClick.AddListener(ShowSettingsMenu);
         startButton.onClick.AddListener(PlaySentenceAnimation);
         rescanButton.onClick.AddListener(ResetSentence);
         backButton.onClick.AddListener(BackToMainMenu);
@@ -57,6 +59,7 @@ public class SentenceManager : MonoBehaviour {
     private void Start() {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         ResetSentence();
+        HideSettingsMenu();
     }
 
     private void ResetSentence() {
@@ -194,10 +197,6 @@ public class SentenceManager : MonoBehaviour {
         CurrentModelTarget.ResetRotation();
     }
 
-    public void BackToMainMenu() {
-        SceneManager.LoadScene("MainMenu");
-    }
-
     public void ShowScanGuideUI() {
         scanGuideUI.SetActive(true);
     }
@@ -220,5 +219,20 @@ public class SentenceManager : MonoBehaviour {
 
     public void HidePreviewUI() {
         previewUI.gameObject.SetActive(false);
+    }
+
+    public void ShowSettingsMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
+        settingsMenu.SetActive(true);
+    }
+
+    public void HideSettingsMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
+        settingsMenu.SetActive(false);
+    }
+
+    public void BackToMainMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -14,14 +14,15 @@ public class AlphabetManager : MonoBehaviour {
     [SerializeField] private List<AlphabetData> alphabetList;
 
     [Space(10)]
-    [Header("Buttons References")]
+    [Header("UI References")]
     [SerializeField] private GameObject arUI;
     [SerializeField] private GameObject scanGuideUI;
+    [SerializeField] private GameObject settingsMenu;
 
     [Space(10)]
     [Header("Buttons References")]
     [SerializeField] private Button backButton;
-    [SerializeField] private Button SettingsButton;
+    [SerializeField] private Button settingsButton;
     [SerializeField] private Button nextButton;
     [SerializeField] private Button previousButton;
     [SerializeField] private Button playButton;
@@ -32,6 +33,7 @@ public class AlphabetManager : MonoBehaviour {
     private int currentIndex = 0;
 
     private void Awake() {
+        settingsButton.onClick.AddListener(ShowSettingsMenu);
         backButton.onClick.AddListener(BackToMainMenu);
         nextButton.onClick.AddListener(NextSign);
         previousButton.onClick.AddListener(PreviousSign);    
@@ -42,9 +44,11 @@ public class AlphabetManager : MonoBehaviour {
     }
 
     private void Start() {
+        Screen.orientation = ScreenOrientation.Portrait;
         CurrentModelTarget = modelTarget;
         HideUI();
         LoadCurrentSign();
+        HideSettingsMenu();
     }
 
     private void LoadCurrentSign() {
@@ -94,7 +98,18 @@ public class AlphabetManager : MonoBehaviour {
         modelTarget.ResetRotation();
     }
 
+    public void ShowSettingsMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
+        settingsMenu.SetActive(true);
+    }
+
+    public void HideSettingsMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
+        settingsMenu.SetActive(false);
+    }
+
     public void BackToMainMenu() {
+        SoundManager.Instance.PlayButtonSoundEffect();
         SceneManager.LoadScene("MainMenu");
     }
 
