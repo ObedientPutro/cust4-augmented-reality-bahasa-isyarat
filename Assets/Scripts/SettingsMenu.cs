@@ -7,20 +7,30 @@ public class SettingsMenu : MonoBehaviour
 {
 
     [Header("Slider Game Object")]
-    [SerializeField] private Slider backsoundSlider;
-    [SerializeField] private Slider soundEffectSlider;
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
 
-    public void Start() {
-        backsoundSlider.value = SoundManager.Instance.GetBackgroundMusicVolume();
-        soundEffectSlider.value = SoundManager.Instance.GetSoundEffectVolume();
+    private float bgmVolume = 0.5f;
+    private float sfxVolume = 0.5f;
+
+    private void Start() {
+        (bgmVolume, sfxVolume) = SoundManager.Instance.GetVolume();
+        bgmSlider.value = bgmVolume;
+        sfxSlider.value = sfxVolume;
     }
 
-    public void SetBackgroundMusicVolume() {
-        SoundManager.Instance.SetBackgroundMusicVolume(backsoundSlider.value);
+    private void SaveVolume() {
+        SoundManager.Instance.SetVolume(bgmVolume, sfxVolume);
     }
 
-    public void SetSoundEffectVolume() {
-        SoundManager.Instance.SetSoundEffectVolume(soundEffectSlider.value);
+    public void ChangeBGMVolume() {
+        bgmVolume = bgmSlider.value;
+        SaveVolume();
+    }
+
+    public void ChangeSFXVolume() {
+        sfxVolume = sfxSlider.value;
+        SaveVolume();
     }
 
 }

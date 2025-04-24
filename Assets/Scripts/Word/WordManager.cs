@@ -22,6 +22,7 @@ public class WordManager : MonoBehaviour {
     [SerializeField] private Button resetRotationButton;
 
     private List<ModelTarget> allModelTargets = new List<ModelTarget>();
+    private const string BUTTON_BUBBLE = "button_bubble";
     
     private void Awake() {
         settingsButton.onClick.AddListener(ShowSettingsMenu);
@@ -33,6 +34,7 @@ public class WordManager : MonoBehaviour {
     }
 
     private void Start() {
+        SoundManager.Instance.PlayBGM("main_backsound");
         Screen.orientation = ScreenOrientation.Portrait;
         CurrentModelTarget = null;
         HideUI();
@@ -50,8 +52,7 @@ public class WordManager : MonoBehaviour {
     }
 
     public void SetActiveModelTarget(ModelTarget newTarget) {
-        if (!allModelTargets.Contains(newTarget))
-        allModelTargets.Add(newTarget);
+        if (!allModelTargets.Contains(newTarget)) allModelTargets.Add(newTarget);
 
         // Set all others inactive
         foreach (var model in allModelTargets) {
@@ -88,17 +89,17 @@ public class WordManager : MonoBehaviour {
     }
 
     public void ShowSettingsMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         settingsMenu.SetActive(true);
     }
 
     public void HideSettingsMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         settingsMenu.SetActive(false);
     }
 
     public void BackToMainMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SceneManager.LoadScene("MainMenu");
     }
 }

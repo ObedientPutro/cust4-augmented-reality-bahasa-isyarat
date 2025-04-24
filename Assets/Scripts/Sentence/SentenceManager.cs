@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +39,7 @@ public class SentenceManager : MonoBehaviour {
     private List<CardIdentity> scannedCards = new List<CardIdentity>();
     private SentenceState sentenceState;
     private ModelTarget spawnedModelTarget;
+    private const string BUTTON_BUBBLE = "button_bubble";
 
     private void Awake() {
         if (Instance == null && Instance != this) {
@@ -57,6 +59,7 @@ public class SentenceManager : MonoBehaviour {
     }
 
     private void Start() {
+        SoundManager.Instance.PlayBGM("main_backsound");
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         ResetSentence();
         HideSettingsMenu();
@@ -108,7 +111,7 @@ public class SentenceManager : MonoBehaviour {
         if (scannedCards.Count < 2) return;
         sentenceState = SentenceState.Animating;
 
-        int centerIndex = Mathf.CeilToInt(scannedCards.Count / 2);
+        int centerIndex = Mathf.CeilToInt(scannedCards.Count / 2f);
         CardIdentity centerCard = scannedCards[centerIndex];
 
         if (spawnedModelTarget != null) Destroy(spawnedModelTarget.gameObject);
@@ -127,8 +130,7 @@ public class SentenceManager : MonoBehaviour {
     }
 
     private IEnumerator<WaitForSeconds> PlayAnimationsInOrder() {
-        foreach (var card in scannedCards) {
-            RuntimeAnimatorController controller = card.animator;
+        foreach (RuntimeAnimatorController controller in scannedCards.Select(card => card.animator)) {
             AnimationClip clip = controller.animationClips.Length > 0 ? controller.animationClips[0] : null;
 
             if (clip != null) {
@@ -222,17 +224,17 @@ public class SentenceManager : MonoBehaviour {
     }
 
     public void ShowSettingsMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         settingsMenu.SetActive(true);
     }
 
     public void HideSettingsMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         settingsMenu.SetActive(false);
     }
 
     public void BackToMainMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SceneManager.LoadScene("MainMenu");
     }
 }

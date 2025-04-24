@@ -9,7 +9,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject aboutMenu;
     [SerializeField] private GameObject tutorialMenu;
 
+    private const string BUTTON_BUBBLE = "button_bubble";
+
     private void Start() {
+        SoundManager.Instance.PlayBGM("main_backsound");
         Screen.orientation = ScreenOrientation.Portrait;
         ShowMainMenu();
     }
@@ -23,57 +26,57 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void ShowMainMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SetAllMenusInactive();
         mainMenu.SetActive(true);
     }
 
     public void ShowScanMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SetAllMenusInactive();
         scanMenu.SetActive(true);
     }
 
     public void ShowSettingsMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         settingsMenu.SetActive(true);
     }
 
     public void ShowAboutMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SetAllMenusInactive();
         aboutMenu.SetActive(true);
     }
 
     public void ShowTutorialMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SetAllMenusInactive();
         tutorialMenu.SetActive(true);
     }
 
     public void ExitApplication() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         Debug.Log("Application Exited");
         Application.Quit();
     }
 
     public void GoToAlphabetScene() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SceneManager.LoadScene("Alphabet");
     }
 
     public void GoToWordScene() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SceneManager.LoadScene("Word");
     }
 
     public void GoToSentenceScene() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SceneManager.LoadScene("Sentence");
     }
 
     public void GoToQuizScene() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SceneManager.LoadScene("Quiz");
     }
 

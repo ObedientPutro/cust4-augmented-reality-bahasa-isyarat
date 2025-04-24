@@ -1392,7 +1392,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1818560618}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SetSoundEffectVolume
+        m_MethodName: ChangeSFXVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4030,7 +4030,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1818560618}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: SetBackgroundMusicVolume
+        m_MethodName: ChangeBGMVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5501,8 +5501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b39da9aa1ee2c42a1dbef8793d1463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backsoundSlider: {fileID: 1451603090}
-  soundEffectSlider: {fileID: 674624278}
+  bgmSlider: {fileID: 1451603090}
+  sfxSlider: {fileID: 674624278}
 --- !u!1 &1857345342
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,6 +32,8 @@ public class AlphabetManager : MonoBehaviour {
 
     private int currentIndex = 0;
 
+    private const string BUTTON_BUBBLE = "button_bubble";
+
     private void Awake() {
         settingsButton.onClick.AddListener(ShowSettingsMenu);
         backButton.onClick.AddListener(BackToMainMenu);
@@ -44,6 +46,7 @@ public class AlphabetManager : MonoBehaviour {
     }
 
     private void Start() {
+        SoundManager.Instance.PlayBGM("main_backsound");
         Screen.orientation = ScreenOrientation.Portrait;
         CurrentModelTarget = modelTarget;
         HideUI();
@@ -99,17 +102,17 @@ public class AlphabetManager : MonoBehaviour {
     }
 
     public void ShowSettingsMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         settingsMenu.SetActive(true);
     }
 
     public void HideSettingsMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         settingsMenu.SetActive(false);
     }
 
     public void BackToMainMenu() {
-        SoundManager.Instance.PlayButtonSoundEffect();
+        SoundManager.Instance.PlaySFX(BUTTON_BUBBLE);
         SceneManager.LoadScene("MainMenu");
     }
 
