@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 334c8790a1e565d43a558c50ea0126aa, type: 3}
+  m_Name: Mau Makan Apa
+  m_EditorClassIdentifier: 
+  type: 0
+  question: Animasi diatas adalah bahasa isyarat dari kalimat?
+  animationControllers:
+  - {fileID: 9100000, guid: 79fb6eae12c10f64e9875fc97d8ee192, type: 2}
+  - {fileID: 9100000, guid: af61b4d0816e4434cb1d0c02964c30f3, type: 2}
+  - {fileID: 9100000, guid: a9b91eb956fedff4d87254467492d101, type: 2}
+  answers:
+  - text: Mau Makan Apa
+    isCorrect: 1
+  - text: Apa Mau Makan
+    isCorrect: 0
+  - text: Siapa Makan Dia
+    isCorrect: 0
+  - text: Makan Apa Dia
+    isCorrect: 0
