@@ -4,8 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AlphabetManager : MonoBehaviour {
-
-    public static ModelTarget CurrentModelTarget { get; private set; }
+    public static AlphabetManager Instance { get; private set; }
 
     [Header("Core References")]
     [SerializeField] private ModelTarget modelTarget;
@@ -31,10 +30,17 @@ public class AlphabetManager : MonoBehaviour {
     [SerializeField] private Button resetRotationButton;
 
     private int currentIndex = 0;
+    private ModelTarget currentModelTarget;
 
     private const string BUTTON_BUBBLE = "button_bubble";
 
     private void Awake() {
+        if (Instance == null && Instance != this) {
+            Instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+
         settingsButton.onClick.AddListener(ShowSettingsMenu);
         backButton.onClick.AddListener(BackToMainMenu);
         nextButton.onClick.AddListener(NextSign);
@@ -48,7 +54,7 @@ public class AlphabetManager : MonoBehaviour {
     private void Start() {
         SoundManager.Instance.PlayBGM("main_backsound");
         Screen.orientation = ScreenOrientation.Portrait;
-        CurrentModelTarget = modelTarget;
+        currentModelTarget = modelTarget;
         HideUI();
         LoadCurrentSign();
         HideSettingsMenu();
@@ -63,6 +69,10 @@ public class AlphabetManager : MonoBehaviour {
         // Play animation directly
         modelTarget.SetAnimatorController(data.animatorController);
         modelTarget.PlayCurrentAnimation();
+    }
+
+    public ModelTarget GetCurrentModelTarget() {
+        return currentModelTarget;
     }
 
     public void ShowUI() {

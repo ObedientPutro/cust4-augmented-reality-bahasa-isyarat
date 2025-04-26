@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WordManager : MonoBehaviour {
+    public static WordManager Instance { get; private set; }
 
-    public static ModelTarget CurrentModelTarget { get; private set; }
+    [SerializeField] private List<ModelTarget> modelTargets = new List<ModelTarget>();
 
+    [Space(10)]
     [Header("UI References")]
     [SerializeField] private GameObject arUI;
     [SerializeField] private GameObject scanGuideUI;
@@ -21,10 +23,17 @@ public class WordManager : MonoBehaviour {
     [SerializeField] private Button resetAnimationButton;
     [SerializeField] private Button resetRotationButton;
 
-    private List<ModelTarget> allModelTargets = new List<ModelTarget>();
+    private ModelTarget currentModelTarget;
+
     private const string BUTTON_BUBBLE = "button_bubble";
     
     private void Awake() {
+        if (Instance == null && Instance != this) {
+            Instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+
         settingsButton.onClick.AddListener(ShowSettingsMenu);
         backButton.onClick.AddListener(BackToMainMenu); 
         playButton.onClick.AddListener(Play);
@@ -36,9 +45,13 @@ public class WordManager : MonoBehaviour {
     private void Start() {
         SoundManager.Instance.PlayBGM("main_backsound");
         Screen.orientation = ScreenOrientation.Portrait;
-        CurrentModelTarget = null;
+        currentModelTarget = null;
         HideUI();
         HideSettingsMenu();
+    }
+
+    public ModelTarget GetCurrentModelTarget() {
+        return currentModelTarget;
     }
 
     public void ShowUI() {
@@ -51,41 +64,57 @@ public class WordManager : MonoBehaviour {
         scanGuideUI.SetActive(true);
     }
 
-    public void SetActiveModelTarget(ModelTarget newTarget) {
-        if (!allModelTargets.Contains(newTarget)) allModelTargets.Add(newTarget);
-
-        // Set all others inactive
-        foreach (var model in allModelTargets) {
-            if (model != newTarget) model.gameObject.SetActive(false);
-        }
+    public void SetActiveModelTarget(ModelTarget modelTarget) {
+        if (currentModelTarget != null) return;
 
         // Set new one as current and ensure it's active
-        CurrentModelTarget = newTarget;
-        newTarget.gameObject.SetActive(true);
+        currentModelTarget = modelTarget;
+        modelTarget.gameObject.SetActive(true);
+        modelTarget.transform.parent?.gameObject.SetActive(true);
+
+        // Show the ui and play it's animation
+        ShowUI();
+        modelTarget.PlayCurrentAnimation();
+
+        // Set all others inactive, including their parents
+        foreach (var model in modelTargets) {
+            if (model != currentModelTarget) {
+                model.gameObject.SetActive(false);
+                model.transform.parent?.gameObject.SetActive(false);
+            }
+        }
     }
 
-    public void ResetActiveModelTarget() {
-        CurrentModelTarget = null;
+    public void ResetActiveModelTarget(ModelTarget modelTarget) {
+        if (currentModelTarget != modelTarget) return;
+
+        // Hide ui and reset the animation
+        HideUI();
+        currentModelTarget.StopAndResetAnimation();
+
+        currentModelTarget = null;
+
         // Reactivate all in case the user scans again
-        foreach (var model in allModelTargets) {
-            if (model != null) model.gameObject.SetActive(true);
+        foreach (var model in modelTargets) {
+            model.transform.parent?.gameObject.SetActive(true);
+            model.gameObject.SetActive(true);
         }
     }
 
     public void Play() {
-        CurrentModelTarget.TogglePlayPause(false);
+        currentModelTarget.TogglePlayPause(false);
     }
 
     public void Pause() {
-        CurrentModelTarget.TogglePlayPause(true);
+        currentModelTarget.TogglePlayPause(true);
     }
 
     public void ResetCurrent() {
-        CurrentModelTarget.ResetAnimation();
+        currentModelTarget.ResetAnimation();
     }
 
     public void OnResetRotation() {
-        CurrentModelTarget.ResetRotation();
+        currentModelTarget.ResetRotation();
     }
 
     public void ShowSettingsMenu() {

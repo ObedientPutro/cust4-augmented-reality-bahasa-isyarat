@@ -9,8 +9,6 @@ using UnityEngine.UI;
 public class SentenceManager : MonoBehaviour {
     public static SentenceManager Instance { get; private set; }
 
-    public static ModelTarget CurrentModelTarget { get; private set; }
-
     public enum SentenceState { Scanning, Animating };
 
     [Header("UI References")]
@@ -39,6 +37,7 @@ public class SentenceManager : MonoBehaviour {
     private List<CardIdentity> scannedCards = new List<CardIdentity>();
     private SentenceState sentenceState;
     private ModelTarget spawnedModelTarget;
+    private ModelTarget currentModelTarget;
     private const string BUTTON_BUBBLE = "button_bubble";
 
     private void Awake() {
@@ -74,7 +73,7 @@ public class SentenceManager : MonoBehaviour {
         if (spawnedModelTarget != null) {
             Destroy(spawnedModelTarget.gameObject);
             spawnedModelTarget = null;
-            CurrentModelTarget = null;
+            currentModelTarget = null;
         }
 
         HideArUI();
@@ -104,7 +103,7 @@ public class SentenceManager : MonoBehaviour {
     }
 
     private void SetCurrentModelTarget(ModelTarget modelTarget) {
-        CurrentModelTarget = modelTarget;
+        currentModelTarget = modelTarget;
     }
 
     private void PlaySentenceAnimation() {
@@ -120,7 +119,7 @@ public class SentenceManager : MonoBehaviour {
         spawnedModelTarget.transform.localRotation = Quaternion.identity;
 
         SetCurrentModelTarget(spawnedModelTarget);
-        CurrentModelTarget.ResetRotation();
+        currentModelTarget.ResetRotation();
 
         ShowArUI();
         HidePreviewUI();
@@ -134,18 +133,22 @@ public class SentenceManager : MonoBehaviour {
             AnimationClip clip = controller.animationClips.Length > 0 ? controller.animationClips[0] : null;
 
             if (clip != null) {
-                CurrentModelTarget.SetAnimatorController(controller);
-                CurrentModelTarget.PlayCurrentAnimation();
+                currentModelTarget.SetAnimatorController(controller);
+                currentModelTarget.PlayCurrentAnimation();
                 
-                float duration = clip.length / CurrentModelTarget.GetAnimationSpeed();
+                float duration = clip.length / currentModelTarget.GetAnimationSpeed();
                 yield return new WaitForSeconds(duration);
             }
         }
     }
 
     private void ResetAnimationsInOrder() {
-        CurrentModelTarget.StopAndResetAnimation();
+        currentModelTarget.StopAndResetAnimation();
         StopCoroutine(PlayAnimationsInOrder());
+    }
+
+    public ModelTarget GetCurrentModelTarget() {
+        return currentModelTarget;
     }
 
     public void OnCardFound(CardIdentity card) {
@@ -183,11 +186,11 @@ public class SentenceManager : MonoBehaviour {
     }
 
     public void Play() {
-        CurrentModelTarget.TogglePlayPause(false);
+        currentModelTarget.TogglePlayPause(false);
     }
 
     public void Pause() {
-        CurrentModelTarget.TogglePlayPause(true);
+        currentModelTarget.TogglePlayPause(true);
     }
 
     public void ResetCurrent() {
@@ -196,7 +199,7 @@ public class SentenceManager : MonoBehaviour {
     }
 
     public void OnResetRotation() {
-        CurrentModelTarget.ResetRotation();
+        currentModelTarget.ResetRotation();
     }
 
     public void ShowScanGuideUI() {

@@ -420,7 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: KamuModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 351099324}
   - component: {fileID: 351099323}
   - component: {fileID: 351099322}
-  - component: {fileID: 351099321}
+  - component: {fileID: 351099325}
   m_Layer: 0
   m_Name: Apa
   m_TagString: Untagged
@@ -578,25 +578,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &351099321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351099320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 351099323}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Apa
-  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
-  mCastedBehaviour: {fileID: 351099323}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &351099322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,30 +619,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117780821}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -677,37 +634,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2117780821}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2117780821}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -739,7 +672,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 351099321}
+  mPreview: {fileID: 351099325}
 --- !u!4 &351099324
 Transform:
   m_ObjectHideFlags: 0
@@ -756,6 +689,25 @@ Transform:
   - {fileID: 2117780822}
   m_Father: {fileID: 510888098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &351099325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351099320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 351099323}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Apa
+  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
+  mCastedBehaviour: {fileID: 351099323}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &409824379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,7 +1498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: SukaModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -1768,30 +1720,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1564037735}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -1807,37 +1735,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1564037735}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1564037735}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1955,7 +1859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: MauModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -2032,7 +1936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: KamiModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -2070,7 +1974,7 @@ GameObject:
   - component: {fileID: 966097334}
   - component: {fileID: 966097333}
   - component: {fileID: 966097332}
-  - component: {fileID: 966097331}
+  - component: {fileID: 966097335}
   m_Layer: 0
   m_Name: Mereka
   m_TagString: Untagged
@@ -2078,25 +1982,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &966097331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966097330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 966097333}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Mereka
-  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
-  mCastedBehaviour: {fileID: 966097333}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &966097332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2138,30 +2023,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249454908}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -2177,37 +2038,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1249454908}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1249454908}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2239,7 +2076,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 966097331}
+  mPreview: {fileID: 966097335}
 --- !u!4 &966097334
 Transform:
   m_ObjectHideFlags: 0
@@ -2256,6 +2093,25 @@ Transform:
   - {fileID: 1249454909}
   m_Father: {fileID: 510888098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &966097335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966097330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 966097333}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Mereka
+  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
+  mCastedBehaviour: {fileID: 966097333}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &987088541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,7 +2159,7 @@ GameObject:
   - component: {fileID: 1019691353}
   - component: {fileID: 1019691352}
   - component: {fileID: 1019691351}
-  - component: {fileID: 1019691350}
+  - component: {fileID: 1019691354}
   m_Layer: 0
   m_Name: Kami
   m_TagString: Untagged
@@ -2311,25 +2167,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1019691350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019691349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1019691352}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Kami
-  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
-  mCastedBehaviour: {fileID: 1019691352}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &1019691351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2371,30 +2208,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 964963914}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -2410,37 +2223,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 964963914}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 964963914}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2472,7 +2261,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1019691350}
+  mPreview: {fileID: 1019691354}
 --- !u!4 &1019691353
 Transform:
   m_ObjectHideFlags: 0
@@ -2489,6 +2278,25 @@ Transform:
   - {fileID: 964963915}
   m_Father: {fileID: 510888098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1019691354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019691349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1019691352}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Kami
+  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
+  mCastedBehaviour: {fileID: 1019691352}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &1031745408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,7 +2383,7 @@ GameObject:
   - component: {fileID: 1093294675}
   - component: {fileID: 1093294674}
   - component: {fileID: 1093294673}
-  - component: {fileID: 1093294672}
+  - component: {fileID: 1093294676}
   m_Layer: 0
   m_Name: Dia
   m_TagString: Untagged
@@ -2583,25 +2391,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1093294672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093294671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1093294674}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Dia
-  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
-  mCastedBehaviour: {fileID: 1093294674}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &1093294673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2643,30 +2432,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1376318651}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -2682,37 +2447,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1376318651}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1376318651}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2744,7 +2485,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1093294672}
+  mPreview: {fileID: 1093294676}
 --- !u!4 &1093294675
 Transform:
   m_ObjectHideFlags: 0
@@ -2761,6 +2502,25 @@ Transform:
   - {fileID: 1376318652}
   m_Father: {fileID: 510888098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1093294676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093294671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1093294674}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Dia
+  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
+  mCastedBehaviour: {fileID: 1093294674}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &1114661362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2884,7 +2644,7 @@ GameObject:
   - component: {fileID: 1223292829}
   - component: {fileID: 1223292828}
   - component: {fileID: 1223292827}
-  - component: {fileID: 1223292826}
+  - component: {fileID: 1223292830}
   m_Layer: 0
   m_Name: Mau
   m_TagString: Untagged
@@ -2892,25 +2652,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1223292826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223292825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1223292828}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Mau
-  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
-  mCastedBehaviour: {fileID: 1223292828}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &1223292827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2952,30 +2693,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 897084847}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -2991,37 +2708,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 897084847}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 897084847}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3053,7 +2746,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1223292826}
+  mPreview: {fileID: 1223292830}
 --- !u!4 &1223292829
 Transform:
   m_ObjectHideFlags: 0
@@ -3070,6 +2763,25 @@ Transform:
   - {fileID: 897084848}
   m_Father: {fileID: 510888098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1223292830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223292825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1223292828}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Mau
+  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
+  mCastedBehaviour: {fileID: 1223292828}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &1226040684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,7 +2952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: MerekaModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -3601,7 +3313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: DiaModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -3813,7 +3525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: MakanModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -4295,7 +4007,7 @@ GameObject:
   - component: {fileID: 1530680850}
   - component: {fileID: 1530680849}
   - component: {fileID: 1530680848}
-  - component: {fileID: 1530680847}
+  - component: {fileID: 1530680851}
   m_Layer: 0
   m_Name: Makan
   m_TagString: Untagged
@@ -4303,25 +4015,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1530680847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530680846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1530680849}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Makan
-  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
-  mCastedBehaviour: {fileID: 1530680849}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &1530680848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4363,30 +4056,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1398795900}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -4402,37 +4071,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1398795900}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1398795900}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4464,7 +4109,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1530680847}
+  mPreview: {fileID: 1530680851}
 --- !u!4 &1530680850
 Transform:
   m_ObjectHideFlags: 0
@@ -4481,6 +4126,25 @@ Transform:
   - {fileID: 1398795901}
   m_Father: {fileID: 510888098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1530680851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530680846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1530680849}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Makan
+  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
+  mCastedBehaviour: {fileID: 1530680849}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1001 &1564037734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4531,7 +4195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: SiapaModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -4738,30 +4402,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6758996823360045316}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -4777,37 +4417,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6758996823360045316}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 6758996823360045316}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4904,6 +4520,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f148c629064e3d459593a3547bdd620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelTargets:
+  - {fileID: 6758996823360045316}
+  - {fileID: 2117780821}
+  - {fileID: 1376318651}
+  - {fileID: 964963914}
+  - {fileID: 117666592}
+  - {fileID: 1398795900}
+  - {fileID: 1564037735}
+  - {fileID: 897084847}
+  - {fileID: 1249454908}
+  - {fileID: 709973810}
   arUI: {fileID: 1179649116}
   scanGuideUI: {fileID: 409824379}
   settingsMenu: {fileID: 1818560616}
@@ -4922,7 +4549,7 @@ Transform:
   m_GameObject: {fileID: 1642715160}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26791093, y: 0.09860576, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5074,7 +4701,7 @@ GameObject:
   - component: {fileID: 1669505118}
   - component: {fileID: 1669505117}
   - component: {fileID: 1669505116}
-  - component: {fileID: 1669505115}
+  - component: {fileID: 1669505119}
   m_Layer: 0
   m_Name: Kamu
   m_TagString: Untagged
@@ -5082,25 +4709,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1669505115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669505114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1669505117}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Kamu
-  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
-  mCastedBehaviour: {fileID: 1669505117}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &1669505116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5142,30 +4750,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 117666592}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -5181,37 +4765,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 117666592}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 117666592}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5243,7 +4803,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1669505115}
+  mPreview: {fileID: 1669505119}
 --- !u!4 &1669505118
 Transform:
   m_ObjectHideFlags: 0
@@ -5260,6 +4820,25 @@ Transform:
   - {fileID: 117666593}
   m_Father: {fileID: 510888098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1669505119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669505114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1669505117}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Kamu
+  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
+  mCastedBehaviour: {fileID: 1669505117}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &1779603587
 GameObject:
   m_ObjectHideFlags: 0
@@ -5514,7 +5093,7 @@ GameObject:
   - component: {fileID: 1857345346}
   - component: {fileID: 1857345345}
   - component: {fileID: 1857345344}
-  - component: {fileID: 1857345343}
+  - component: {fileID: 1857345347}
   m_Layer: 0
   m_Name: Suka
   m_TagString: Untagged
@@ -5522,25 +5101,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1857345343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857345342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 1857345345}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: Suka
-  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
-  mCastedBehaviour: {fileID: 1857345345}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &1857345344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5582,30 +5142,6 @@ MonoBehaviour:
   OnTargetFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 709973810}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: PlayCurrentAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: ShowUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: SetActiveModelTarget
@@ -5621,37 +5157,13 @@ MonoBehaviour:
   OnTargetLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 709973810}
-        m_TargetAssemblyTypeName: ModelTarget, Assembly-CSharp
-        m_MethodName: StopAndResetAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1642715161}
-        m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
-        m_MethodName: HideUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1642715161}
         m_TargetAssemblyTypeName: WordManager, Assembly-CSharp
         m_MethodName: ResetActiveModelTarget
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 709973810}
+          m_ObjectArgumentAssemblyTypeName: ModelTarget, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5683,7 +5195,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 1857345343}
+  mPreview: {fileID: 1857345347}
 --- !u!4 &1857345346
 Transform:
   m_ObjectHideFlags: 0
@@ -5700,6 +5212,25 @@ Transform:
   - {fileID: 709973811}
   m_Father: {fileID: 510888098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1857345347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857345342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 1857345345}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: Suka
+  mDatasetName: Vuforia/Bahasa-Isyarat-Alphabet.xml
+  mCastedBehaviour: {fileID: 1857345345}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &1890502726
 GameObject:
   m_ObjectHideFlags: 0
@@ -6418,7 +5949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: ApaModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller
@@ -6547,7 +6078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5462330790892307687, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Name
-      value: ModelTarget
+      value: AkuModelTarget
       objectReference: {fileID: 0}
     - target: {fileID: 7069711349535442381, guid: 278bdbd7f9a9ad447ac71c13cde7b636, type: 3}
       propertyPath: m_Controller

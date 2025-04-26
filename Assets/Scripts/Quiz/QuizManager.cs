@@ -80,6 +80,7 @@ public class QuizManager : MonoBehaviour {
     }
 
     private void Start() {
+        Screen.orientation = ScreenOrientation.Portrait;
         SetQuizManagerState(QuizManagerState.Idle);
     }
 

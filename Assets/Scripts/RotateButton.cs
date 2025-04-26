@@ -21,9 +21,9 @@ public class RotateButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     private ModelTarget GetModelTarget() {
         return gameManager switch {
-            GameManager.Word => WordManager.CurrentModelTarget,
-            GameManager.Alphabet => AlphabetManager.CurrentModelTarget,
-            GameManager.Sentence => SentenceManager.CurrentModelTarget,
+            GameManager.Word => WordManager.Instance.GetCurrentModelTarget(),
+            GameManager.Alphabet => AlphabetManager.Instance.GetCurrentModelTarget(),
+            GameManager.Sentence => SentenceManager.Instance.GetCurrentModelTarget(),
             _ => null
         };
     }
