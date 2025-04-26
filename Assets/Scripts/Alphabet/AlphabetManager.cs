@@ -57,7 +57,7 @@ public class AlphabetManager : MonoBehaviour {
         currentModelTarget = modelTarget;
         HideUI();
         LoadCurrentSign();
-        HideSettingsMenu();
+        settingsMenu.SetActive(false);
     }
 
     private void LoadCurrentSign() {

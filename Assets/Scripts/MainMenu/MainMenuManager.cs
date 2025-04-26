@@ -14,7 +14,9 @@ public class MainMenuManager : MonoBehaviour
     private void Start() {
         SoundManager.Instance.PlayBGM("main_backsound");
         Screen.orientation = ScreenOrientation.Portrait;
-        ShowMainMenu();
+        
+        SetAllMenusInactive();
+        mainMenu.SetActive(true);
     }
 
     private void SetAllMenusInactive() {

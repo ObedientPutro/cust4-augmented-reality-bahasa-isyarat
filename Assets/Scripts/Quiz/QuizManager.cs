@@ -202,6 +202,11 @@ public class QuizManager : MonoBehaviour {
         }
     }
 
+    private void ResetAnimation() {
+        modelTarget.StopAndResetAnimation();
+        StopCoroutine(PlayAnimationsInOrder(currentLevel[currentQuestionIndex]));
+    }
+
     public void StartLevel() {
         NewListRandomQuestions();
         correctAnswers = 0;
@@ -249,7 +254,8 @@ public class QuizManager : MonoBehaviour {
     }
 
     public void ResetCurrent() {
-        modelTarget.ResetAnimation();
+        ResetAnimation();
+        PlayAnimation();
     }
 
     public void SetQuizToIdle() {

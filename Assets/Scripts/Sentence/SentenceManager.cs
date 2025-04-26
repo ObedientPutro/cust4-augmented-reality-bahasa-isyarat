@@ -61,7 +61,7 @@ public class SentenceManager : MonoBehaviour {
         SoundManager.Instance.PlayBGM("main_backsound");
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         ResetSentence();
-        HideSettingsMenu();
+        settingsMenu.SetActive(false);
     }
 
     private void ResetSentence() {

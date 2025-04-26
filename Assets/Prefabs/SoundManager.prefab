@@ -51,17 +51,17 @@ MonoBehaviour:
   - soundName: button_bubble
     audioClip: {fileID: 8300000, guid: 3c04753954e4222418856e7b16201de2, type: 3}
   - soundName: main_backsound
-    audioClip: {fileID: 8300000, guid: ccba8b20b822edb4aaaa19ab8a46b6f5, type: 3}
+    audioClip: {fileID: 8300000, guid: a507089b56be5d44e95f72c50356f5fb, type: 3}
   - soundName: complete_sound
     audioClip: {fileID: 8300000, guid: a6fc533ff8a63ce44aa3772da2d11d73, type: 3}
   - soundName: correct_sound
     audioClip: {fileID: 8300000, guid: cf90895bc15ee454fb599f40907dc4da, type: 3}
   - soundName: game_over_sound
-    audioClip: {fileID: 8300000, guid: d8cf0211cf31b4b4db095c56b1a52684, type: 3}
+    audioClip: {fileID: 8300000, guid: 1a4842c4a3d32484db8878f2c7560892, type: 3}
   - soundName: wrong_sound
     audioClip: {fileID: 8300000, guid: df181d56cf10fa4479df61a0dea205e4, type: 3}
   - soundName: quiz_backsound
-    audioClip: {fileID: 8300000, guid: c6ce6c31f2862c74ebb263cf3217f27c, type: 3}
+    audioClip: {fileID: 8300000, guid: 923c2777a2aa8e147838744e467f3c20, type: 3}
 --- !u!1 &7303796922942555185
 GameObject:
   m_ObjectHideFlags: 0

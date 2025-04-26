@@ -47,7 +47,7 @@ public class WordManager : MonoBehaviour {
         Screen.orientation = ScreenOrientation.Portrait;
         currentModelTarget = null;
         HideUI();
-        HideSettingsMenu();
+        settingsMenu.SetActive(false);
     }
 
     public ModelTarget GetCurrentModelTarget() {
