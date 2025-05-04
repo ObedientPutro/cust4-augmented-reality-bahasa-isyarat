@@ -64,6 +64,12 @@ public class SentenceManager : MonoBehaviour {
         settingsMenu.SetActive(false);
     }
 
+    private void Update() {
+        if (sentenceState == SentenceState.Scanning) {
+            UpdatePreview();
+        }
+    }
+
     private void ResetSentence() {
         sentenceState = SentenceState.Scanning;
         scannedCards.Clear();
@@ -110,7 +116,7 @@ public class SentenceManager : MonoBehaviour {
         if (scannedCards.Count < 2) return;
         sentenceState = SentenceState.Animating;
 
-        int centerIndex = Mathf.CeilToInt(scannedCards.Count / 2f);
+        int centerIndex = Mathf.CeilToInt((scannedCards.Count - 1) / 2);
         CardIdentity centerCard = scannedCards[centerIndex];
 
         if (spawnedModelTarget != null) Destroy(spawnedModelTarget.gameObject);
@@ -153,20 +159,14 @@ public class SentenceManager : MonoBehaviour {
 
     public void OnCardFound(CardIdentity card) {
         if (sentenceState != SentenceState.Scanning) return;
-
-        if (!scannedCards.Contains(card)) {
-            scannedCards.Add(card);
-            UpdatePreview();
-        }
+        if (scannedCards.Contains(card)) return;
+        scannedCards.Add(card);
     }
 
     public void OnCardLost(CardIdentity card) {
         if (sentenceState != SentenceState.Scanning) return;
-
-        if (scannedCards.Contains(card)) {
-            scannedCards.Remove(card);
-            UpdatePreview();
-        }
+        if (!scannedCards.Contains(card)) return;
+        scannedCards.Remove(card);
     }
 
     public void OnImageFound() {
@@ -180,6 +180,7 @@ public class SentenceManager : MonoBehaviour {
     public void OnImageLost() {
         if (sentenceState != SentenceState.Animating) return;
 
+        ResetSentence();
         HideArUI();
         HidePreviewUI();
         ShowScanGuideUI();
