@@ -10,13 +10,19 @@ public class ModelTarget : MonoBehaviour {
 
     [Space(10)]
     [Header("Rotation References")]
-    [SerializeField] private Transform modelTransform;
     [SerializeField] private Vector3 defaultRotationEuler;
     [SerializeField] private float rotationSpeed = 50f;
     
     private Coroutine freezeCoroutine;
     private bool isPaused = false;
     private Coroutine rotationCoroutine;
+    private Vector3 initialScale;
+    private Vector3 initialPosition;
+
+    private void Start() {
+        initialScale = transform.localScale;
+        initialPosition = transform.localPosition;
+    }
     
     public void PlayCurrentAnimation() {
         ResetAnimatorState();
@@ -117,9 +123,19 @@ public class ModelTarget : MonoBehaviour {
 
     public void ResetRotation() {
         transform.localRotation = Quaternion.Euler(defaultRotationEuler);
+        transform.localScale = initialScale;
+        transform.localPosition = initialPosition;
     }
 
     public float GetAnimationSpeed() {
         return animationSpeed;
+    }
+    
+    public void SetInitialPosition(Vector3 position) {
+        initialPosition = position;
+    }
+    
+    public void SetInitialScale(Vector3 scale) {
+        initialScale = scale;
     }
 }

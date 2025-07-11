@@ -17,11 +17,13 @@ public class SentenceManager : MonoBehaviour {
     [SerializeField] private GameObject previewUI;
     [SerializeField] private TextMeshProUGUI sentencePreviewText;
     [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private TextMeshProUGUI wordText;
 
     [Space(10)]
     [Header("Core References")]
     [SerializeField] private ModelTarget modelTargetPrefab;
     [SerializeField] private Vector3 modelTargetOffset;
+    [SerializeField] private Vector3 modelTargetScale = new Vector3(.2f, .2f, .2f);
 
     [Space(10)]
     [Header("Buttons References")]
@@ -93,8 +95,6 @@ public class SentenceManager : MonoBehaviour {
         string preview = string.Join(" ", scannedCards.ConvertAll(card => card.word));
         sentencePreviewText.text = preview;
 
-        Debug.Log(scannedCards.Count.ToString());
-
         if (scannedCards.Count >= 2) {
             HideArUI();
             ShowPreviewUI();
@@ -121,10 +121,11 @@ public class SentenceManager : MonoBehaviour {
 
         if (spawnedModelTarget != null) Destroy(spawnedModelTarget.gameObject);
         spawnedModelTarget = Instantiate(modelTargetPrefab, centerCard.transform);
-        spawnedModelTarget.transform.localPosition = modelTargetOffset;
         spawnedModelTarget.transform.localRotation = Quaternion.identity;
 
         SetCurrentModelTarget(spawnedModelTarget);
+        currentModelTarget.SetInitialPosition(modelTargetOffset);
+        currentModelTarget.SetInitialScale(modelTargetScale);
         currentModelTarget.ResetRotation();
 
         ShowArUI();
@@ -135,10 +136,13 @@ public class SentenceManager : MonoBehaviour {
     }
 
     private IEnumerator<WaitForSeconds> PlayAnimationsInOrder() {
-        foreach (RuntimeAnimatorController controller in scannedCards.Select(card => card.animator)) {
+        foreach (CardIdentity card in scannedCards) {
+            RuntimeAnimatorController controller = card.animator;
             AnimationClip clip = controller.animationClips.Length > 0 ? controller.animationClips[0] : null;
 
             if (clip != null) {
+                wordText.text = card.word;
+
                 currentModelTarget.SetAnimatorController(controller);
                 currentModelTarget.PlayCurrentAnimation();
                 

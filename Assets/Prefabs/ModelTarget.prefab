@@ -3339,6 +3339,7 @@ GameObject:
   - component: {fileID: 4104108985473302152}
   - component: {fileID: 7069711349535442381}
   - component: {fileID: 4955673286578589777}
+  - component: {fileID: 6873117249977053090}
   m_Layer: 0
   m_Name: ModelTarget
   m_TagString: Untagged
@@ -3398,9 +3399,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7069711349535442381}
   animationSpeed: 0.5
-  modelTransform: {fileID: 4104108985473302152}
   defaultRotationEuler: {x: -90, y: 180, z: 0}
   rotationSpeed: 50
+--- !u!114 &6873117249977053090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462330790892307687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af199eba44f377e4391733189e7a1f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeed: 0.01
+  minScale: 0.2
+  maxScale: 0.5
 --- !u!1 &5492004947156377655
 GameObject:
   m_ObjectHideFlags: 0
